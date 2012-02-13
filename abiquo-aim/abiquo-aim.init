@@ -1,0 +1,57 @@
+#!/bin/sh
+#
+# chkconfig: 2345 99 99
+# description: Starts the required Abiquo AIM daemons
+#
+# Source function library.
+. /etc/init.d/functions
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+RETVAL=0
+
+start()
+{
+
+  if ! [ -f /opt/vm_repository/.abiquo_repository ]; then
+	  echo -e "\n/opt/vm_repository/.abiquo_repository file not found."
+	  echo -e "Make sure the Abiquo NFS Repository is mounted in /opt/vm_repository\n"
+	  exit 1
+  fi
+
+  status libvirtd
+  RETVAL=$?
+
+  if [ $RETVAL -ne 0 ]; then
+    /etc/init.d/libvirtd start
+  fi
+  
+  echo -n $"Starting AIM daemon: "
+  /usr/sbin/abiquo-aim --config-file /etc/abiquo-aim.ini -d
+
+  success
+  echo
+}
+
+stop()
+{
+  /etc/init.d/libvirtd stop
+  success
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    stop
+    start
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+exit $RETVAL

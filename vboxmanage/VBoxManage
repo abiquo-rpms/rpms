@@ -1,0 +1,2 @@
+#!/bin/sh
+PATH=$PATH:/opt/vboxmanage LD_LIBRARY_PATH=/opt/vboxmanage/ /opt/vboxmanage/VBoxManage $@

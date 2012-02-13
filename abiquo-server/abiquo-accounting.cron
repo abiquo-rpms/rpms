@@ -1,0 +1,6 @@
+# Runs every hour
+0 * * * * root mysql -uroot -hlocalhost -e "CALL kinton.UpdateAccounting();"
+
+# Runs every Sunday at 12:00 and deletes records older than a week.
+0 12 * * 0 root mysql -uroot -hlocalhost -e "CALL kinton.DeleteOldRegisteredEvents(168);"
+

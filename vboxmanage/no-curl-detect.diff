@@ -1,0 +1,58 @@
+diff -uNr VirtualBox-3.1.8_OSE.orig/configure VirtualBox-3.1.8_OSE/configure
+--- VirtualBox-3.1.8_OSE.orig/configure	2010-05-10 08:45:12.000000000 +0200
++++ VirtualBox-3.1.8_OSE/configure	2010-09-15 12:29:05.000000000 +0200
+@@ -940,31 +940,31 @@
+ #
+ check_curl()
+ {
+-  if [ -z "$BUILD_LIBCURL" ]; then
+-    test_header libcurl
+-    cat > $ODIR.tmp_src.cc << EOF
+-#include <cstdio>
+-#include <curl/curl.h>
+-extern "C" int main(void)
+-{
+-  printf("found version %s", LIBCURL_VERSION);
+-#if 10000*LIBCURL_VERSION_MAJOR + 100*LIBCURL_VERSION_MINOR + LIBCURL_VERSION_PATCH >= 71601
+-  printf(", OK.\n");
+-  return 0;
+-#else
+-  printf(", expected version 7.16.1 or higher\n");
+-  return 1;
+-#endif
+-}
+-EOF
+-    [ -n "$INCCURL" ] && I_INCCURL=`prefix_I "$INCCURL"`
+-    if test_compile "$LIBCURL $I_INCCURL" libcurl libcurl; then
+-      if test_execute; then
++#  if [ -z "$BUILD_LIBCURL" ]; then
++#    test_header libcurl
++#    cat > $ODIR.tmp_src.cc << EOF
++##include <cstdio>
++##include <curl/curl.h>
++#extern "C" int main(void)
++#{
++#  printf("found version %s", LIBCURL_VERSION);
++##if 10000*LIBCURL_VERSION_MAJOR + 100*LIBCURL_VERSION_MINOR + LIBCURL_VERSION_PATCH >= 71601
++#  printf(", OK.\n");
++#  return 0;
++##else
++#  printf(", expected version 7.16.1 or higher\n");
++#  return 1;
++##endif
++#}
++#EOF
++#    [ -n "$INCCURL" ] && I_INCCURL=`prefix_I "$INCCURL"`
++#    if test_compile "$LIBCURL $I_INCCURL" libcurl libcurl; then
++#      if test_execute; then
+         cnf_append "SDK_VBOX_LIBCURL_LIBS" "`strip_l "$LIBCURL"`"
+         cnf_append "SDK_VBOX_LIBCURL_INCS" "$INCCURL"
+-      fi
+-    fi
+-  fi
++#      fi
++#    fi
++#  fi
+ }
+ 
+ 
