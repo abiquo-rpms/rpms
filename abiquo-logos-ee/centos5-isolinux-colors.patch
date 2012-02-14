@@ -1,0 +1,9 @@
+diff -uNrp redhat-logos-4.9.8-centos.orig/anaconda/splashtolss.sh redhat-logos-4.9.8-centos/anaconda/splashtolss.sh
+--- redhat-logos-4.9.8-centos.orig/anaconda/splashtolss.sh	2006-10-25 12:06:55.000000000 -0500
++++ redhat-logos-4.9.8-centos/anaconda/splashtolss.sh	2007-02-19 05:57:53.000000000 -0600
+@@ -9,4 +9,4 @@ if [ -z "$1" -o -z "$2" ]; then
+   usage
+ fi
+ 
+-pngtopnm $1 | ppmtolss16 \#cdcfd5=7 \#ffffff=15 \#000000=0 \#5b6c93=9 > $2
++pngtopnm $1 | ppmtolss16 > $2
