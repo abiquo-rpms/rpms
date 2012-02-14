@@ -1,6 +1,6 @@
 # Requirements
 
-* Ruby 1.9
+* Ruby 
 * Rubygems
 
 And the following gems installed:
@@ -32,4 +32,17 @@ Building all the packages from master branch:
 Buildding selected packages from master branch:
 
     ABI_BRANCH=master ./builder build --selected abiquo-v2v,abiquo-aim
+
+
+# Related
+
+PKG Wizard
+
+[http://pkg-wizard.frameos.org/]
+
+Mock
+
+[https://fedoraproject.org/wiki/Projects/Mock]
+
+
 
