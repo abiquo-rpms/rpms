@@ -15,6 +15,30 @@ class CLI < Thor
     end
     main selected
   end
+
+  desc "clean_buildbot", "Clean remote buildbot"
+  method_options :host => :string, :port => :string
+  def clean_buildbot
+    host = options[:host] || 'builder6'
+    port = options[:port] || 4567
+    puts "Cleaning remote buildbot #{host}:#{port}"
+    `curl --silent -X POST http://#{host}:4567/job/clean `
+  end
+
+  desc "tag_build", "Tag current buildbot packages"
+  method_options :host => :string, :port => :string, :tag => :string
+  def tag_build
+    host = options[:host] || 'builder6'
+    port = options[:port] || 4567
+    tag = options[:tag]
+    if tag and not tag.strip.chomp.empty?
+      tag = tag.gsub(/\s/, '_')
+      puts "Tagging current buildbot packages at #{host}:#{port} with tag #{tag}"
+      `curl --silent -X POST http://#{host}:4567/tag/#{tag}`
+    else
+      $stderr.puts "Invalid tag"
+    end
+  end
 end
 
 class String
