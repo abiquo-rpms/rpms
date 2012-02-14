@@ -69,7 +69,7 @@ def main(selected=nil)
   failed_packages = []
   packages.each do |p|
     if (not selected.empty? and not selected.include?(p))
-      puts "Skipping package #{p}"
+      puts ">> Skipping package #{p}".yellow
       next
     end
     puts "Building #{p}... ".bold
