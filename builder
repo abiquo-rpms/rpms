@@ -115,7 +115,7 @@ def main(selected=nil)
   end
 
   if !failed_packages.empty?
-    puts "The following packages failed to build:\n\n"
+    puts "\n\nThe following packages failed to build:\n\n"
     failed_packages.each do |p|
       puts p.bold.red
     end
