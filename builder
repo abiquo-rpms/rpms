@@ -2,6 +2,8 @@
 require 'term/ansicolor'
 require 'thor'
 
+ENV['LANG'] = 'POSIX'
+
 class CLI < Thor
 
   desc "build", "Build the packages (all the packages by default)"
