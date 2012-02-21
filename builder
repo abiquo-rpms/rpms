@@ -2,7 +2,7 @@
 require 'term/ansicolor'
 require 'thor'
 
-ENV['LANG'] = 'POSIX'
+ENV['LANG'] = 'en_US.UTF-8'
 
 class CLI < Thor
 
