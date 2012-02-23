@@ -51,7 +51,7 @@ end
 def main(selected=nil)
   packages = %w{
     abiquo-v2v
-    abiquo-tarantino
+    abiquo-virtualfactory
     abiquo-ssm
     abiquo-server
     abiquo-remote-services
