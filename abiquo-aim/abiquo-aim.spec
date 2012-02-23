@@ -1,7 +1,7 @@
 Name:           abiquo-aim
 BuildRequires:  hiredis gcc-c++ thrift-cpp-devel boost-devel curl-devel libvirt-devel 
 Requires:	libvirt hiredis boost
-Version:        2.0rel1.4git20120206
+Version:        2.0rel1.4.1
 Release:        1%{?dist}
 Url:            http://www.abiquo.com/
 License:        BSD(or similar)
@@ -58,6 +58,9 @@ if ! [ -d /opt/vm_repository ]; then
 fi
 
 %changelog
+* Thu Feb 23 2012 Sergio Rubio <srubio@abiquo.com> - 2.0rel1.4.1-1
+- new upstream release
+
 * Wed Jan 11 2012 Sergio Rubio <rubiojr@frameos.org> - 2.0rel1.4-1
 - bumped version
 
